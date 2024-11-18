@@ -164,5 +164,5 @@ To contribute to this project:
 
 For issues or questions:
 - Create GitHub issue
-- Contact ML Platform team
-- Check troubleshooting guide
+- Contact akansha.bansal@amd.com
+
