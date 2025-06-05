@@ -1,0 +1,40 @@
+{
+  "dashboard": {
+    "title": "Artifact Download Speeds",
+    "panels": [
+      {
+        "title": "Download Speed by Source",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "artifact_download_speed_mbps",
+            "legendFormat": "{{source}} - {{artifact_type}}"
+          }
+        ]
+      },
+      {
+        "title": "Download Time Distribution",
+        "type": "heatmap",
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0},
+        "targets": [
+          {
+            "expr": "rate(artifact_download_duration_seconds_bucket[5m])",
+            "legendFormat": "{{source}} - {{artifact_type}}"
+          }
+        ]
+      },
+      {
+        "title": "File Sizes",
+        "type": "gauge",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 8},
+        "targets": [
+          {
+            "expr": "artifact_size_mb",
+            "legendFormat": "{{source}} - {{artifact_type}}"
+          }
+        ]
+      }
+    ]
+  }
+}
