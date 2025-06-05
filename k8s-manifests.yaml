@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: artifact-speed-monitor
+spec:
+ replicas: 1
+ selector:
+   matchLabels:
+     app: artifact-speed-monitor
+ template:
+   metadata:
+     labels:
+       app: artifact-speed-monitor
+   spec:
+     containers:
+     - name: monitor
+       image: YOUR_REGISTRY/artifact-monitor:latest
+       ports:
+       - containerPort: 8000
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: artifact-speed-monitor
+ annotations:
+   prometheus.io/scrape: "true" 
+   prometheus.io/port: "8000"
+spec:
+ selector:
+   app: artifact-speed-monitor
+ ports:
+ - port: 8000
+   targetPort: 8000
